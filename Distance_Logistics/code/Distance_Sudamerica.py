@@ -1,3 +1,4 @@
+# IMPORTAR LIBRERIAS
 import pandas as pd
 import requests #to get the distances from the API
 import json #to read the API response
@@ -8,7 +9,7 @@ import mlrose #for travelling salesman problem
 import datetime
 
 # CARGAR LOS DATOS DE LAS CIUDADES Y SUS COORDENADAS
-df = pd.read_csv("C:\Ezequiel_Sanchez\Proyectos\S&T_Distance_Logistics\data\capbrasil2.csv", sep=',')
+df = pd.read_csv("C:\Ezequiel_Sanchez\Proyectos\Distance_Logistics\data\capbrasil2.csv", sep=',')
 pd.set_option('display.max_columns', None)
 #print(df)
 
@@ -108,12 +109,10 @@ print("MEJOR RUTA")
 print(ce_cities1)
 
 
-
-
-
 # GRAFICO
 import plotly.graph_objects as go
-path_df = ce_cities1
+path_df = ce_cities1.reset_index()
+# print(path_df)
 # draw the capitals
 fig = go.Figure(data=go.Scattergeo(
     locationmode='USA-states',
@@ -144,8 +143,7 @@ fig.update_layout(
     title='MEJOR RUTA ENTRE CIUDADES DE BRAZIL',
     geo_scope='south america')
 
-print(fig.show())
-
+fig.show()
 
 
 
